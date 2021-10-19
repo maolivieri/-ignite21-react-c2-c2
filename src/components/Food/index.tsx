@@ -4,7 +4,22 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 import { Container } from './styles';
 import api from '../../services/api';
 
-const Food = ({ food, handleDelete, handleEditFood }) => {
+type FoodType = {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  available: boolean;
+  image: string;
+}
+
+interface FoodProps {
+  food: FoodType, 
+  handleDelete: (id: number) => void,
+  handleEditFood: (food: FoodType) => void,
+}
+
+const Food = ({ food, handleDelete, handleEditFood }: FoodProps) => {
   const [isAvailable, setIsAvailable] = useState(false)
 
   const toggleAvailable = async () => {
